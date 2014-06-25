@@ -56,6 +56,7 @@ header p{
 }
 .button{
 	text-align: center;
+	text-decoration: none;
 	font-family: "HelveticaNeue-light";
 	background-color: rgba(17, 189, 58, 0.8);
 	padding: 10px 25px;
@@ -110,9 +111,6 @@ header p{
 .nose:hover{
 	text-decoration: underline;
 }
-#start{
-	display: none;
-	}
 #one{
 	display: none;
 }

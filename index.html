@@ -2,122 +2,44 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>Document</title>
 	<link rel="stylesheet" href="styles/reset.css"/>
 	<link rel="stylesheet" href="styles/style.css"/> 
-	
+	<script src="http://code.jquery.com/jquery.min.js"></script>
+	<script src="js/quiz.js"> </script>	
+	<title>Odd World Cup Facts Quiz</title>
 </head>
 <body>
 	<header>
 	<p>Odd World Cup Facts Quiz</p>
 	</header>
 	<div class="main">
-		<div id="start" class = "welcome correct">
+		<div id="start" class = "welcome">
 			<h2>Welcome!</h2>
 			<p> You will answer 5 questions about weird World Cup facts.</p>
 			<p>You may retake the quiz as many times as you like.</p>
-			<a class="button">Begin</a>
+			<a class="button" href="#">Begin</a>
 		</div>
 		<div id= "one" class="question">
-			<p>Which Country has come in third place in a World Cup?
+			<p>
 			</p>
-			<div class="choice"><input type="radio" name="country" value="USA">USA</div>
-			<div class="choice"><input type="radio" name="country" value="Belgium">Belgium</div>
-			<div class="choice"><input type="radio" name="country" value="England">England</div>
-			<div class="choice last"><input type="radio" name="country" value="Netherlands">Netherlands</div>
-			<a class="button">Submit</a>
+			
+			<a class="button" href="#">Submit</a>
 		</div>
 		<div id = "a" class="welcome correct">
 			<h2>Correct!</h2>
 			<p>In the 1930 World Cup the US had its best result 3rd place.</p>
-			<a class="button">Next</a>
+			<a class="button" href="#">Next</a>
 		</div>
 		<div id = "a_false" class="welcome wrong">
 			<h2>Wrong!</h2>
 			<p>In the 1930 World Cup the US had its best result 3rd place.</p>
-			<a class="button">Next</a>
-		</div>
-		<div id= "two" class="question">
-			<p>Which country's coach is known for picking his nose in World Cups?
-			</p>
-			<div class="choice"><input type="radio" name="country" value="France">France</div>
-			<div class="choice"><input type="radio" name="country" value="Italy">Italy</div>
-			<div class="choice"><input type="radio" name="country" value="Ghana">Ghana</div>
-			<div class="choice last"><input type="radio" name="country" value="Germany">Germany</div>
-			<a class="button">Submit</a>
-		</div>
-		<div id = "b" class="welcome correct">
-			<h2>Correct!</h2>
-			<p>Joachim Loew, head coach of Germany, picked his nose and ate the gold in the 2010 World Cup. View it <a class="nose" target="_blank" href="https://www.youtube.com/watch?v=MLF6QsvBlU8">here.</a> This World cup he picked his nose right before shaking hands with Christiano Ronaldo. Watch <a class="nose" target="_blank" href="https://www.youtube.com/watch?v=NWfIX4Gecic">here.</a></p>
-			<a class="button">Next</a>
-		</div>
-		<div id = "b_false" class="welcome wrong">
-			<h2>Wrong!</h2>
-			<p>Joachim Loew, head coach of Germany, picked his nose and ate the gold in the 2010 World Cup. View it <a class="nose" target="_blank" href="https://www.youtube.com/watch?v=MLF6QsvBlU8">here.</a> This World cup he picked his nose right before shaking hands with Christiano Ronaldo. Watch <a class="nose" target="_blank" href="https://www.youtube.com/watch?v=NWfIX4Gecic">here.</a></p>
-			<a class="button">Next</a>
-		</div>
-		<div id= "three" class="question">
-			<p>Which country has a player known for biting others on the field?
-			</p>
-			<div class="choice"><input type="radio" name="country" value="Algeria">Algeria</div>
-			<div class="choice"><input type="radio" name="country" value="Brazil">Brazil</div>
-			<div class="choice"><input type="radio" name="country" value="Uruguay">Uruguay</div>
-			<div class="choice last"><input type="radio" name="country" value="England">England</div>
-			<a class="button">Submit</a>
-		</div>
-		<div id = "c" class="welcome correct">
-			<h2>Correct!</h2>
-			<p>Luis Suarez of Uruguay is called the cannibal. <a class="nose" target="_blank" href="https://www.youtube.com/watch?v=8W8VC-WY-V8">Here</a> he bites a player on Italy.</p>
-			<a class="button">Next</a>
-		</div>
-		<div id = "c_false" class="welcome wrong">
-			<h2>Wrong!</h2>
-			<p>Luis Suarez of Uruguay is called the cannibal. <a class="nose" target="_blank" href="https://www.youtube.com/watch?v=8W8VC-WY-V8">Here</a> he bites a player on Italy.</p>
-			<a class="button">Next</a>
-		</div>
-		<div id= "four" class="question">
-			<p>The Boateng Brothers currently play for seperate countries, which two countries do they play for?
-			</p>
-			<div class="choice"><input type="radio" name="country" value="Germany">Germany and Netherlands</div>
-			<div class="choice"><input type="radio" name="country" value="USA">USA and Mexico</div>
-			<div class="choice"><input type="radio" name="country" value="Ghana">Germany and Ghana</div>
-			<div class="choice last"><input type="radio" name="country" value= "Iran">Algeria and Iran</div>
-			<a class="button">Submit</a>
-		</div>
-		<div id = "d" class="welcome correct">
-			<h2>Correct!</h2>
-			<p>They have played against each other both in this World Cup and 2010</p>
-			<a class="button">Next</a>
-		</div>
-		<div id = "d_false" class="welcome wrong">
-			<h2>Wrong!</h2>
-			<p>Germany and Ghana is the correct answer. The mother is German and the father is from Ghana. They have played against each other both in this World Cup and 2010</p>
-			<a class="button">Next</a>
-		</div>
-		<div id= "five" class="question">
-			<p>Which country has the most goals ever scored in a world cup game?
-			</p>
-			<div class="choice"><input type="radio" name="country" value="Argentina">Argentina</div>
-			<div class="choice"><input type="radio" name="country" value="Hungary">Hungary</div>
-			<div class="choice"><input type="radio" name="country" value="England">England</div>
-			<div class="choice last"><input type="radio" name="country" value="Belgium">Belgium</div>
-			<a class="button">Submit</a>
-		</div>
-		<div id = "e" class="welcome correct">
-			<h2>Correct!</h2>
-			<p>Hungary with 10 goals in the 1982 World Cup against El Salvador. El Salvador managed ot score one goal that game.</p>
-			<a class="button">Next</a>
-		</div>
-		<div id = "e_false" class="welcome wrong">
-			<h2>Wrong!</h2>
-			<p>Hungary with 10 goals in the 1982 World Cup against El Salvador. El Salvador managed ot score one goal that game.</p>
-			<a class="button">Next</a>
+			<a class="button" href="#">Next</a>
 		</div>
 		<div id = "finish" class = "welcome">
 			<h2>Finished!</h2>
 			<p> Your score is</p>
 			<p>Hit restart to take the quiz again.</p>
-			<a class="button">Restart</a>
+			<a >Restart</a>
 		</div>
 	</div>
 </body>
