@@ -44,10 +44,14 @@ $("#start").find("a").on("click",function(event)
 	{
 	$("#start").hide();
 	$("#one").show();
-	$("#one").find("p").append(questions[1].text);
+	$("#one").find("p").append(questions[0].text);
 	for(var i = 0; i < 4; i++){
-	var input = '<div class="choice"><input type="radio" name="country" value="USA">' + questions[1].options[i] + '</div>';
+	var input = '<div class="choice"><input type="radio" name="country" value='+questions[0].options[i]+'>' + questions[0].options[i] + '</div>';
 	$("#one").append(input);
 	}
 });
 })
+
+
+
+
