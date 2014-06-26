@@ -41,7 +41,7 @@ var questions = [{
 }]
 var clearItem = function() {
 	$("#one").find("p").empty();
-	$("#one").find(".choice").empty();
+	$("#one").find(".choice").remove();
 };
 $("#start").find("a").on("click",function(event)
 	{
@@ -67,8 +67,13 @@ $("#one").find("a").on("click",function(event)
 	clearItem();
 })
 $("#a").find("a").on("click",function(event){
-	$("#one").show();
 	$("#a").hide();
+	$("#one").show();
+	$("#one").find("p").text(questions[1].text);
+	for(var i = 0; i < 4; i++){
+	var input = '<div class="choice"><input type="radio" id = '+i+' name="country" value='+questions[1].options[i]+'>' + questions[1].options[i] + '</div>';
+	$("#one").append(input);
+}
 })
 })
 
