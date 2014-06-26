@@ -46,10 +46,22 @@ $("#start").find("a").on("click",function(event)
 	$("#one").show();
 	$("#one").find("p").append(questions[0].text);
 	for(var i = 0; i < 4; i++){
-	var input = '<div class="choice"><input type="radio" name="country" value='+questions[0].options[i]+'>' + questions[0].options[i] + '</div>';
+	var input = '<div class="choice"><input type="radio" id = '+i+' name="country" value='+questions[0].options[i]+'>' + questions[0].options[i] + '</div>';
 	$("#one").append(input);
 	}
-});
+})
+$("#one").find("a").on("click",function(event)
+{
+	$("#one").hide();
+	$("#a").show();
+	if($("input[type='radio']:checked").val() == questions[0].answer){
+		$("h2").append("Correct!");
+	}
+	else{
+		$("h2").append("Wrong!");
+	}
+	$(".welcome").find("p").append(questions[0].description);
+})
 })
 
 
