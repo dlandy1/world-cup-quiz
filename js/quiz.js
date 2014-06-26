@@ -39,28 +39,36 @@ var questions = [{
 	answer: "Hungary",
 	description: "Hungary with 10 goals in the 1982 World Cup against El Salvador. El Salvador managed to score one goal that game."
 }]
-
+var clearItem = function() {
+	$("#one").find("p").empty();
+	$("#one").find(".choice").empty();
+};
 $("#start").find("a").on("click",function(event)
 	{
 	$("#start").hide();
 	$("#one").show();
-	$("#one").find("p").append(questions[0].text);
+	$("#one").find("p").text(questions[0].text);
 	for(var i = 0; i < 4; i++){
 	var input = '<div class="choice"><input type="radio" id = '+i+' name="country" value='+questions[0].options[i]+'>' + questions[0].options[i] + '</div>';
 	$("#one").append(input);
-	}
+}
 })
 $("#one").find("a").on("click",function(event)
 {
 	$("#one").hide();
 	$("#a").show();
 	if($("input[type='radio']:checked").val() == questions[0].answer){
-		$("h2").append("Correct!");
+		$("h2").text("Correct!");
 	}
 	else{
-		$("h2").append("Wrong!");
+		$("h2").text("Wrong!");
 	}
-	$(".welcome").find("p").append(questions[0].description);
+	$(".welcome").find("p").text(questions[0].description);
+	clearItem();
+})
+$("#a").find("a").on("click",function(event){
+	$("#one").show();
+	$("#a").hide();
 })
 })
 
