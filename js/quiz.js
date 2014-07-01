@@ -39,41 +39,53 @@ var questions = [{
 	answer: "Hungary",
 	description: "Hungary with 10 goals in the 1982 World Cup against El Salvador. El Salvador managed to score one goal that game."
 }]
+var needed = [];
+var right = []; 
 var clearItem = function() {
 	$("#one").find("p").empty();
 	$("#one").find(".choice").remove();
 };
+// create a function 
+var itemOne = function(){
+	$("#one").find("a").on("click",function(event){
+	$("#one").hide();
+	$("#a").show();
+	console.log($("input[type='radio']:checked").val())
+	console.log(questions[needed.length].answer)
+	if($("input[type='radio']:checked").val() == questions[needed.length].answer){
+		$("h2").text("Correct!");
+		right.push(1);
+	}
+	else{
+		$("h2").text("Wrong!");
+	}
+	$(".welcome").find("p").text(questions[needed.length].description);
+})
+};
+
 $("#start").find("a").on("click",function(event)
 	{
 	$("#start").hide();
 	$("#one").show();
 	$("#one").find("p").text(questions[0].text);
-	for(var i = 0; i < 4; i++){
-	var input = '<div class="choice"><input type="radio" id = '+i+' name="country" value='+questions[0].options[i]+'>' + questions[0].options[i] + '</div>';
+	for(var j = 0; j < 4; j++){
+	var input = '<div class="choice"><input type="radio" id = '+j+' name="country" value='+questions[0].options[j]+'>' + questions[0].options[j] + '</div>';
 	$("#one").append(input);
 }
+itemOne();
 })
-$("#one").find("a").on("click",function(event)
-{
-	$("#one").hide();
-	$("#a").show();
-	if($("input[type='radio']:checked").val() == questions[0].answer){
-		$("h2").text("Correct!");
-	}
-	else{
-		$("h2").text("Wrong!");
-	}
-	$(".welcome").find("p").text(questions[0].description);
-	clearItem();
-})
+// create a function
 $("#a").find("a").on("click",function(event){
+	needed.push(1);
+	clearItem();
 	$("#a").hide();
 	$("#one").show();
 	$("#one").find("p").text(questions[1].text);
-	for(var i = 0; i < 4; i++){
-	var input = '<div class="choice"><input type="radio" id = '+i+' name="country" value='+questions[1].options[i]+'>' + questions[1].options[i] + '</div>';
+	for(var j = 0; j < 4; j++){
+	var input = '<div class="choice"><input type="radio" id = '+j+' name="country" value='+questions[1].options[j]+'>' + questions[1].options[j] + '</div>';
 	$("#one").append(input);
 }
+itemOne();
 })
 })
 
