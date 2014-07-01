@@ -16,7 +16,7 @@ var questions = [{
 	text: "Which country's coach is known for picking his nose in World Cups?",
 	options: ["France","Italy","Ghana","Germany"],
 	answer: "Germany",
-	description: "Joachim Loew, head coach of Germany, picked his nose and ate the gold in the 2010 World Cup. View it" + links[0]+ ". This World cup he picked his nose right before shaking hands with Christiano Ronaldo."
+	description: "Joachim Loew, head coach of Germany, picked his nose and ate the gold in the 2010 World Cup. This World cup he picked his nose right before shaking hands with Christiano Ronaldo."
 }, {
 	name: "bite",
 	numb: 3,
@@ -28,8 +28,8 @@ var questions = [{
 	name: "bro",
 	numb: 4,
 	text: "The Boateng Brothers currently play for seperate countries, which two countries do they play for?",
-	options: ["Germany and Netherlands","USA and Mexico","Germany and Ghana","Algeria and Iran"],
-	answer: "Germany and Ghana",
+	options: ["Netherlands and Germany","USA and Mexico","Germany and Ghana","Algeria and Iran"],
+	answer: "Germany",
 	description: "They have played against each other both in this World Cup and 2010"
 }, {
 	name: "goals",
@@ -47,20 +47,20 @@ var clearItem = function() {
 };
 // create a function 
 var itemOne = function(){
+	if(needed.length < 4){
 	$("#one").find("a").on("click",function(event){
 	$("#one").hide();
 	$("#a").show();
-	console.log($("input[type='radio']:checked").val())
-	console.log(questions[needed.length].answer)
 	if($("input[type='radio']:checked").val() == questions[needed.length].answer){
-		$("h2").text("Correct!");
+		$("#a").find("h2").text("Correct!");
 		right.push(1);
 	}
 	else{
-		$("h2").text("Wrong!");
+		$("#a").find("h2").text("Wrong!");
 	}
-	$(".welcome").find("p").text(questions[needed.length].description);
+	$("#a").find("p").text(questions[needed.length].description);
 })
+}
 };
 
 $("#start").find("a").on("click",function(event)
@@ -75,16 +75,27 @@ $("#start").find("a").on("click",function(event)
 itemOne();
 })
 // create a function
-$("#a").find("a").on("click",function(event){
-	needed.push(1);
+var newQ = function () {
+	if(needed.length == 4){
+		$("#one").remove();
+		$("#a").remove();
+		$("#finish").show();
+	}
+	else{
 	clearItem();
 	$("#a").hide();
 	$("#one").show();
-	$("#one").find("p").text(questions[1].text);
+	$("#one").find("p").text(questions[needed.length].text);
 	for(var j = 0; j < 4; j++){
-	var input = '<div class="choice"><input type="radio" id = '+j+' name="country" value='+questions[1].options[j]+'>' + questions[1].options[j] + '</div>';
+	var input = '<div class="choice"><input type="radio" id = '+j+' name="country" value='+questions[needed.length].options[j]+'>' + questions[needed.length].options[j] + '</div>';
 	$("#one").append(input);
+	}
 }
+}
+$("#a").find("a").on("click",function(event){
+	needed.push(1);
+	console.log(needed.length)
+	newQ();
 itemOne();
 })
 })
