@@ -42,47 +42,58 @@ var questions = [{
 var needed = [];
 var right = []; 
 var checkRight = function(){
-	if($("h2").text() == "Welcome!Correct!Finished!"){
+	if($("h2").text() == "Correct!Finished!"){
 		right.push(1);
 	console.log(right.length);
 	console.log($("h2").text());
+
 }
 };
 var clearItem = function() {
 	$("#one").find("p").empty();
 	$("#one").find(".choice").remove();
-	;
+	$(".pop").hide();
+	$("a").text("Next");
 };
-var checked = $("input[type='radio']:checked").val();
 // create a function 
 var itemOne = function(){
 	if(needed.length <= 4){
-	$("#one").find("a").on("click",function(event){
-	$("#one").hide();
-	$("#a").show();
-	console.log($("input[type='radio']:checked").val());
 	if($("input[type='radio']:checked").val() == questions[needed.length].answer){
 		$("#a").find("h2").empty();
 		$("#a").find("h2").text("Correct!");
+		$("#one").hide();
+		$("#a").show();
+		$("#a").find("p").text(questions[needed.length].description);
 	}
 	else{
 		$("#a").find("h2").text("Wrong!");
+		$("#one").hide();
+		$("#a").show();
+		$("#a").find("p").text(questions[needed.length].description);
 	}
-	$("#a").find("p").text(questions[needed.length].description);
-})
 }
-};
+}
 
 // create a function
 var newQ = function () {
-	if(needed.length >= 4){
-		$("#one").remove();
-		$("#a").remove();
+	if(needed.length >= 5){
+		$("#one").hide();
+		$("#a").hide();
 		$("#finish").show();
 		$("#finish").find("b").append(right.length/5 *100);
+		$("a").text("Restart");
 	}
+	else if(needed.length == 0){
+		clearItem();
+		$("#a").hide();
+		$("#one").show();
+		$("#one").find("p").text(questions[needed.length].text);
+		for(var j = 0; j < 4; j++){
+		var input = '<div class="choice"><input type="radio" id = '+j+' name="country" value='+questions[needed.length].options[j]+'>' + questions[needed.length].options[j] + '</div>';
+		$("#one").append(input);
+	}
+}
 	else{
-	needed.push(1);
 	clearItem();
 	$("#a").hide();
 	$("#one").show();
@@ -93,23 +104,26 @@ var newQ = function () {
 	}
 }
 };
-
-$("#start").find("a").on("click",function(event)
-	{
-	$("#start").hide();
-	$("#one").show();
-	$("#one").find("p").text(questions[0].text);
-	for(var j = 0; j < 4; j++){
-	var input = '<div class="choice"><input type="radio" id = '+j+' name="country" value='+questions[0].options[j]+'>' + questions[0].options[j] + '</div>';
-	$("#one").append(input);
-	checkRight();
-}
-itemOne();
-})
 $("#a").find("a").on("click",function(event){
 	checkRight();
 	newQ();
-itemOne();
+})
+$("#finish").find("a").on("click",function(event){
+		needed.length = 0;
+		console.log(needed.length);
+		right.length = 0;
+		$("#finish").hide();
+		newQ();
+})
+$("#one").find("a").on("click",function(event){
+		if($("input[type='radio']:checked").val() == null){
+		alert("Check an answer");
+		event.preventDefault();
+	}
+	else{
+		itemOne();
+		needed.push(1);
+	}
 })
 })
 
