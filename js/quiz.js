@@ -61,13 +61,9 @@ var itemOne = function(){
 	$("#one").hide();
 	$("#a").show();
 	console.log($("input[type='radio']:checked").val());
-	if(checked == questions[needed.length].answer){
+	if($("input[type='radio']:checked").val() == questions[needed.length].answer){
 		$("#a").find("h2").empty();
 		$("#a").find("h2").text("Correct!");
-	}
-	else if(checked == null){
-		alert("Check an answer");
-		itemOne();
 	}
 	else{
 		$("#a").find("h2").text("Wrong!");
