@@ -41,25 +41,60 @@ var questions = [{
 }]
 var needed = [];
 var right = []; 
+var checkRight = function(){
+	if($("h2").text() == "Welcome!Correct!Finished!"){
+		right.push(1);
+	console.log(right.length);
+	console.log($("h2").text());
+}
+};
 var clearItem = function() {
 	$("#one").find("p").empty();
 	$("#one").find(".choice").remove();
+	;
 };
+var checked = $("input[type='radio']:checked").val();
 // create a function 
 var itemOne = function(){
-	if(needed.length < 4){
+	if(needed.length <= 4){
 	$("#one").find("a").on("click",function(event){
 	$("#one").hide();
 	$("#a").show();
-	if($("input[type='radio']:checked").val() == questions[needed.length].answer){
+	console.log($("input[type='radio']:checked").val());
+	if(checked == questions[needed.length].answer){
+		$("#a").find("h2").empty();
 		$("#a").find("h2").text("Correct!");
-		right.push(1);
+	}
+	else if(checked == null){
+		alert("Check an answer");
+		itemOne();
 	}
 	else{
 		$("#a").find("h2").text("Wrong!");
 	}
 	$("#a").find("p").text(questions[needed.length].description);
 })
+}
+};
+
+// create a function
+var newQ = function () {
+	if(needed.length >= 4){
+		$("#one").remove();
+		$("#a").remove();
+		$("#finish").show();
+		$("#finish").find("b").append(right.length/5 *100);
+	}
+	else{
+	needed.push(1);
+	clearItem();
+	$("#a").hide();
+	$("#one").show();
+	$("#one").find("p").text(questions[needed.length].text);
+	for(var j = 0; j < 4; j++){
+	var input = '<div class="choice"><input type="radio" id = '+j+' name="country" value='+questions[needed.length].options[j]+'>' + questions[needed.length].options[j] + '</div>';
+	$("#one").append(input);
+	}
 }
 };
 
@@ -71,30 +106,12 @@ $("#start").find("a").on("click",function(event)
 	for(var j = 0; j < 4; j++){
 	var input = '<div class="choice"><input type="radio" id = '+j+' name="country" value='+questions[0].options[j]+'>' + questions[0].options[j] + '</div>';
 	$("#one").append(input);
+	checkRight();
 }
 itemOne();
 })
-// create a function
-var newQ = function () {
-	if(needed.length == 4){
-		$("#one").remove();
-		$("#a").remove();
-		$("#finish").show();
-	}
-	else{
-	clearItem();
-	$("#a").hide();
-	$("#one").show();
-	$("#one").find("p").text(questions[needed.length].text);
-	for(var j = 0; j < 4; j++){
-	var input = '<div class="choice"><input type="radio" id = '+j+' name="country" value='+questions[needed.length].options[j]+'>' + questions[needed.length].options[j] + '</div>';
-	$("#one").append(input);
-	}
-}
-}
 $("#a").find("a").on("click",function(event){
-	needed.push(1);
-	console.log(needed.length)
+	checkRight();
 	newQ();
 itemOne();
 })
