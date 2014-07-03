@@ -30,7 +30,7 @@ var questions = [{
 	text: "The Boateng Brothers currently play for seperate countries, which two countries do they play for?",
 	options: ["Netherlands and Germany","USA and Mexico","Germany and Ghana","Algeria and Iran"],
 	answer: "Germany",
-	description: "They have played against each other both in this World Cup and 2010"
+	description: "One parent was German and the other Ghanan. They have played against each other both in this World Cup and 2010"
 }, {
 	name: "goals",
 	numb: 5,
@@ -52,6 +52,7 @@ var checkRight = function(){
 var clearItem = function() {
 	$("#one").find("p").empty();
 	$("#one").find(".choice").remove();
+	$("#finish").find("b").empty();
 	$(".pop").hide();
 	$("a").text("Next");
 };
@@ -110,8 +111,8 @@ $("#a").find("a").on("click",function(event){
 })
 $("#finish").find("a").on("click",function(event){
 		needed.length = 0;
-		console.log(needed.length);
 		right.length = 0;
+		console.log(right.length);
 		$("#finish").hide();
 		newQ();
 })
