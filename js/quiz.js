@@ -54,7 +54,6 @@ var clearItem = function() {
 	$("#one").find(".choice").remove();
 	$("#finish").find("b").empty();
 	$(".pop").hide();
-	$("a").text("Next");
 };
 // create a function 
 var itemOne = function(){
@@ -72,6 +71,7 @@ var itemOne = function(){
 		$("#a").show();
 		$("#a").find("p").text(questions[needed.length].description);
 	}
+	$("a").text("Next");
 }
 }
 
@@ -92,6 +92,7 @@ var newQ = function () {
 		for(var j = 0; j < 4; j++){
 		var input = '<div class="choice"><input type="radio" id = '+j+' name="country" value='+questions[needed.length].options[j]+'>' + questions[needed.length].options[j] + '</div>';
 		$("#one").append(input);
+		$("a").text("Submit");
 	}
 }
 	else{
@@ -102,6 +103,7 @@ var newQ = function () {
 	for(var j = 0; j < 4; j++){
 	var input = '<div class="choice"><input type="radio" id = '+j+' name="country" value='+questions[needed.length].options[j]+'>' + questions[needed.length].options[j] + '</div>';
 	$("#one").append(input);
+	$("a").text("Submit");
 	}
 }
 };
